@@ -4,9 +4,9 @@ server:
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://119.91.223.39:10001/drug?useUnicode=true&characterEncoding=utf8&useSSL=true&serverTimezone=UTC
-    username: root
-    password: Pj20020318@@
+    url: jdbc:mysql:///drug?useUnicode=true&characterEncoding=utf8&useSSL=true&serverTimezone=UTC
+    username: # 你的数据库账号
+    password: # 你的密码
     type: com.alibaba.druid.pool.DruidDataSource
   mvc:
     static-path-pattern: /static/**
