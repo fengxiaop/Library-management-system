@@ -1,0 +1,15 @@
+server:
+  port: 8999
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://119.91.223.39:10001/drug?useUnicode=true&characterEncoding=utf8&useSSL=true&serverTimezone=UTC
+    username: root
+    password: Pj20020318@@
+    type: com.alibaba.druid.pool.DruidDataSource
+  mvc:
+    static-path-pattern: /static/**
+  thymeleaf:
+    prefix: classpath:/templates
+    cache: false

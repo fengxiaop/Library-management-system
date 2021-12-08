@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="zh_CN" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>湖南工业大学图书管理系统</title>
+    <link rel="stylesheet" th:href="@{/static/layui/css/layui.css}" media="all">
+    <link rel="stylesheet" th:href="@{/static/admin/style.css}" media="all">
+</head>
+<body class="layui-layout-body">
+    <!--顶部-->
+    <div class="layui-layout layui-layout-admin">
+        <div class="layui-header">
+            <div class="layui-logo">图书管理系统</div>
+            <ul class="layui-nav layui-layout-right">
+                <li class="layui-nav-item"><a href="/logout">退出系统</a> </li>
+            </ul>
+        </div>
+        <!--左侧菜单-->
+        <div class="layui-side layui-bg-black">
+            <div class="layui-side-scroll">
+                <ul class="layui-nav layui-nav-tree" lay-accordion="true">
+                    <li class="layui-nav-item">
+                        <a href="javascript:;" class="layui-nav-item">图书借还管理</a>
+                        <dl class="layui-nav-child">
+                            <dd><a href="#" class="site-demo-active" lay-href="/owinfo" data-id="11" data-title="登记出入库信息">登记出入库信息</a> </dd>
+                            <dd><a href="#" class="site-demo-active" lay-href="/owinfo" data-id="11" data-title="登记出入库信息">读者信息管理</a> </dd>
+                        </dl>
+                    </li>
+                    <li class="layui-nav-item">
+                        <a href="javascript:;" class="layui-nav-item">推荐书籍管理</a>
+                        <dl class="layui-nav-child">
+                            <dd><a href="#" class="site-demo-active" lay-href="/saleinfo" data-id="21" data-title="新书记录">新书记录</a> </dd>
+                        </dl>
+                    </li>
+                    <li class="layui-nav-item">
+                        <a href="javascript:;" class="layui-nav-item">图书明细查询</a>
+                        <dl class="layui-nav-child">
+                            <dd><a href="#" class="site-demo-active" lay-href="/druginfo" data-id="31" data-title="图书信息">图书信息</a> </dd>
+                            <dd><a href="#" class="site-demo-active" lay-href="/supplier" data-id="32" data-title="出版社信息">出版社信息</a> </dd>
+                        </dl>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!--主体部分-->
+        <div class="layui-body">
+            <div class="layui-tab" lay-filter="demo" lay-allowclose="true" style="margin: 0;">
+                <ul class="layui-tab-title"></ul>
+                <div class="layui-tab-content"></div>
+            </div>
+    </div>
+    <script th:src="@{/static/layui/layui.js}"></script>
+    <script>
+        layui.use(['element','layer','jquery'],function () {
+            var element = layui.element;
+            var $ = layui.$;
+            //左侧菜单树叶点击事件
+            $('.site-demo-active').on('click',function () {
+                var dataid = $(this);
+                //判断右侧是否有tab
+                if($(".layui-tab-title li[lay-id]").length<=0){
+                    //没有tab，直接打开新的tab
+                    active.tabAdd(dataid.attr('lay-href'),dataid.attr('data-id'),dataid.attr('data-title'));
+                }else{
+                    //判断该tab项是否已经存在
+                    var isExist = false;
+                    $.each($(".layui-tab-title li[lay-id]"),function () {
+                        //如果点击左侧菜单栏传入的id在右侧tab项中的lay-id可以找到，说明该tab项已经打开
+                        if($(this).attr("lay-id") == dataid.attr("data-id")){
+                            isExist = true;
+                        }
+                    });
+                    if(isExist == false){
+                        //不存在当前id对应的tab，直接打开新的tab
+                        active.tabAdd(dataid.attr('lay-href'),dataid.attr('data-id'),dataid.attr('data-title'));
+                    }
+                }
+                //不管是不是新增了tab，最后都要转到要打开的选项页面
+                active.tabChange(dataid.attr("data-id"));
+            });
+
+            //配置active，绑定几项事件，后面可以用active调用这些事件
+            var active = {
+                //新增tab项
+                //url是页面地址，id对应data-id,name对应标题
+                tabAdd: function (url,id,name) {
+                    element.tabAdd('demo',{
+                        title:name,
+                        content:'<iframe data-frameid="'+id+'" scrolling="auto" frameborder="0" src="'+url+'" style="width:100%;height:800px;"></iframe>',
+                        id:id
+                    });
+                },
+                //根据id切换到指定的tab
+                tabChange: function (id) {
+                    element.tabChange('demo',id);
+                },
+                //关闭指定的tab
+                tabDelete: function (id) {
+                    element.tabDelete('demo',id);
+                }
+            }
+        });
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

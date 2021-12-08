@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="zh_CN" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>图书信息</title>
+    <link rel="stylesheet" th:href="@{/static/layui/css/layui.css}" media="all">
+    <link rel="stylesheet" th:href="@{/static/admin/style.css}" media="all">
+</head>
+<body>
+    <div class="layui-fluid">
+        <div class="layui-card">
+            <div class="layui-card-body" style="padding: 15px;">
+                <form class="layui-form layui-form-pane" action="">
+                    <input name="id" th:value="${obj?.id}" class="layui-input layui-hide"/>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">图书名称</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="name" th:value="${obj?.name}" lay-verify="required" placeholder="请输入图书名称" autocomplete="off" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">图书编码</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="number" th:value="${obj?.number}" lay-verify="required" placeholder="请输入图书编码" autocomplete="off" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">出版社</label>
+                        <div class="layui-input-block">
+                            <select name="supplier" id="supplier"></select>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">出版时间</label>
+                        <div class="layui-input-block">
+                            <input type="text" readonly name="producttime" id="producttime" th:value="${obj?.producttimeStr}" lay-verify="required" placeholder="请输入出版时间" autocomplete="off" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">借书日期</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="warrenty" th:value="${obj?.warrenty}" lay-verify="required" placeholder="请输入借书日期（月）" autocomplete="off" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">价格</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="price" th:value="${obj?.price}" lay-verify="required" placeholder="请输入价格" autocomplete="off" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">库存</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="stock" th:value="${obj?.stock}" lay-verify="required" placeholder="请输入库存" autocomplete="off" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-form-item layui-hide">
+                        <input type="button" lay-submit lay-filter="LAY-front-submit" id="LAY-front-submit" value="确认">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script th:src="@{/static/layui/layui.js}"></script>
+    <script>
+        layui.use(['form','laydate'],function () {
+            var $ = layui.$;
+            var laydate = layui.laydate;
+            var form = layui.form;
+
+            //支持日期控件
+            laydate.render({
+                elem: '#producttime',
+                trigger: 'click'
+            });
+
+            //当前供应商的值
+            var currentSupplier = '[[${obj?.supplier}]]';
+            //获取供应商列表
+            $.ajax({
+                url: '/supplier/supplierList',
+                dataType:'json',
+                type:'post',
+                cache:false,
+                success:function (data) {
+                    $('#supplier').prepend("<option value=''>请选择</option>");
+                    for(var i=0;i<data.data.length;i++){
+                        if(data.data[i].name==currentSupplier){
+                            $('#supplier').append("<option selected value='"+data.data[i].name+"'>"+data.data[i].name+"</option>");
+                        }else{
+                            $('#supplier').append("<option value='"+data.data[i].name+"'>"+data.data[i].name+"</option>");
+                        }
+                    }
+                    form.render();          //下拉列表渲染，把内容加载进去
+                }
+            });
+        });
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

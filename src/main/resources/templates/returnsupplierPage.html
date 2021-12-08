@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="zh_CN" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>退货给供应商</title>
+    <link rel="stylesheet" th:href="@{/static/layui/css/layui.css}" media="all">
+    <link rel="stylesheet" th:href="@{/static/admin/style.css}" media="all">
+</head>
+<body>
+    <div class="layui-fluid">
+        <div class="layui-card">
+            <div class="layui-card-body" style="padding: 15px;">
+                <form class="layui-form layui-form-pane" action="">
+                    <input name="id" th:value="${obj?.id}" class="layui-input layui-hide"/>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">药品名称</label>
+                        <div class="layui-input-block">
+                            <select name="dname" id="dname"></select>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">数量</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="dcount" th:value="${obj?.dcount}" lay-verify="required" placeholder="请输入数量" autocomplete="off" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">供应商</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="sname" th:value="${obj?.sname}" lay-verify="required" placeholder="请输入供应商" autocomplete="off" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">进货时间</label>
+                        <div class="layui-input-block">
+                            <input type="text" readonly name="buytime" id="buytime" th:value="${obj?.buytimeStr}" lay-verify="required" placeholder="请输入进货时间" autocomplete="off" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">退货原因</label>
+                        <div class="layui-input-block">
+                            <textarea name="reason" th:text="${obj?.reason}" lay-verify="required" placeholder="请输入退货原因" autocomplete="off" class="layui-textarea"></textarea>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">退货时间</label>
+                        <div class="layui-input-block">
+                            <input type="text" readonly name="createtime" id="createtime" th:value="${obj?.createtimeStr}" lay-verify="required" placeholder="请输入退货时间" autocomplete="off" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-form-item layui-hide">
+                        <input type="button" lay-submit lay-filter="LAY-front-submit" id="LAY-front-submit" value="确认">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script th:src="@{/static/layui/layui.js}"></script>
+    <script>
+        layui.use(['form','laydate'],function () {
+            var $ = layui.$;
+            var laydate = layui.laydate;
+            var form = layui.form;
+
+            //支持日期控件
+            laydate.render({
+                elem: '#buytime',
+                trigger: 'click'
+            });
+            laydate.render({
+                elem: '#createtime',
+                trigger: 'click'
+            });
+
+            //当前药品的值
+            var currentDname = '[[${obj?.dname}]]';
+            //获取供应商列表
+            $.ajax({
+                url: '/druginfo/druginfoList',
+                dataType:'json',
+                type:'post',
+                cache:false,
+                success:function (data) {
+                    $('#dname').prepend("<option value=''>请选择</option>");
+                    for(var i=0;i<data.data.length;i++){
+                        if(data.data[i].name==currentDname){
+                            $('#dname').append("<option selected value='"+data.data[i].name+"'>"+data.data[i].name+"</option>");
+                        }else{
+                            $('#dname').append("<option value='"+data.data[i].name+"'>"+data.data[i].name+"</option>");
+                        }
+                    }
+                    form.render();          //下拉列表渲染，把内容加载进去
+                }
+            });
+        });
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

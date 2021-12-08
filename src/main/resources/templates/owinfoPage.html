@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="zh_CN" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>图书出入库信息</title>
+    <link rel="stylesheet" th:href="@{/static/layui/css/layui.css}" media="all">
+    <link rel="stylesheet" th:href="@{/static/admin/style.css}" media="all">
+</head>
+<body>
+    <div class="layui-fluid">
+        <div class="layui-card">
+            <div class="layui-card-body" style="padding: 15px;">
+                <form class="layui-form layui-form-pane" action="">
+                    <input name="id" th:value="${obj?.id}" class="layui-input layui-hide"/>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">图书名称</label>
+                        <div class="layui-input-block">
+                            <select name="dname" id="dname"></select>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">出入库类型</label>
+                        <div class="layui-input-block" th:style="'display:' + @{(${obj?.type != null} ? 'none' : '')} + ''">
+                            <input type="radio" name="type" value="出库" title="出库">
+                            <input type="radio" name="type" value="入库" title="入库">
+                        </div>
+                        <div class="layui-input-block" th:style="'display:' + @{(${obj?.type == null} ? 'none' : '')} + ''">
+                            <input type="text" th:value="${obj?.type}" class="layui-input" disabled>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">数量</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="count" th:value="${obj?.count}" lay-verify="required" placeholder="请输入数量" autocomplete="off" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">操作人</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="operator" th:value="${obj?.operator}" lay-verify="required" placeholder="请输入操作人" autocomplete="off" class="layui-input">
+                        </div>
+                    </div>
+
+                    <div class="layui-form-item layui-hide">
+                        <input type="button" lay-submit lay-filter="LAY-front-submit" id="LAY-front-submit" value="确认">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script th:src="@{/static/layui/layui.js}"></script>
+    <script>
+        layui.use(['form'],function () {
+            var $ = layui.$;
+            var form = layui.form;
+
+            //当前图书的值
+            var currentDname = '[[${obj?.dname}]]';
+            //获取出版社列表
+            $.ajax({
+                url: '/druginfo/druginfoList',
+                dataType:'json',
+                type:'post',
+                cache:false,
+                success:function (data) {
+                    $('#dname').prepend("<option value=''>请选择</option>");
+                    for(var i=0;i<data.data.length;i++){
+                        if(data.data[i].name==currentDname){
+                            $('#dname').append("<option selected value='"+data.data[i].name+"'>"+data.data[i].name+"</option>");
+                        }else{
+                            $('#dname').append("<option value='"+data.data[i].name+"'>"+data.data[i].name+"</option>");
+                        }
+                    }
+                    form.render();          //下拉列表渲染，把内容加载进去
+                }
+            });
+        });
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
