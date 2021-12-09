@@ -15,18 +15,15 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import java.util.Date;
 import java.util.List;
 
-/**
- * 药品相关的controller
- */
 @Controller
 @RequestMapping(value = "/druginfo")
-public class DruginfoController {
+public class BookinfoController {
 
     @Autowired
     private IDruginfoService druginfoService;
 
     /**
-     * 转向药品页面
+     * 转向图书页面
      */
     @RequestMapping
     public String druginfo(){

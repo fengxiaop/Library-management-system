@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh_CN" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>读者信息</title>
+    <link rel="stylesheet" th:href="@{/static/layui/css/layui.css}" media="all">
+    <link rel="stylesheet" th:href="@{/static/admin/style.css}" media="all">
+</head>
+<body>
+<div class="layui-fluid">
+    <div class="layui-card">
+        <div class="layui-card-body" style="padding: 10px;">
+            <form class="layui-form layui-form-pane" action="">
+                <input name="id" th:value="${obj?.id}" class="layui-input layui-hide"/>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">读者名称</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="name" th:value="${obj?.username}" lay-verify="required" placeholder="请输入读者账号" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">读者密码</label>
+                    <div class="layui-input-block">
+                        <input type="text" textarea name="password" th:text="${obj?.password}" lay-verify="required" placeholder="请输入读者密码" autocomplete="off" class="layui-input"></inputtextarea>
+                    </div>
+                </div>
+                <div class="layui-form-item layui-hide">
+                    <input type="button" lay-submit lay-filter="LAY-front-submit" id="LAY-front-submit" value="确认">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script th:src="@{/static/layui/layui.js}"></script>
+<script>
+    layui.use(['form'],function () {
+        var $ = layui.$;
+
+    });
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

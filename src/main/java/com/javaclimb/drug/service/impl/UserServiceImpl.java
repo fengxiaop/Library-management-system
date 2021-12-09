@@ -1,12 +1,15 @@
 package com.javaclimb.drug.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.javaclimb.drug.entity.User;
 import com.javaclimb.drug.mapper.UserMapper;
 import com.javaclimb.drug.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  * 用户service实现类
@@ -16,6 +19,37 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
 
     @Autowired
     private UserMapper userMapper;
+
+    @Override
+    public IPage<User> selectUserPage(int pageNum, int pageSize, String param) {
+        return null;
+    }
+
+    @Override
+    public int addUser(User user) {
+        return 0;
+    }
+
+    @Override
+    public int editUser(User user) {
+        return 0;
+    }
+
+    @Override
+    public User queryUserById(Integer id) {
+        return null;
+    }
+
+    @Override
+    public int delUserById(Integer id) {
+        return 0;
+    }
+
+    @Override
+    public List<User> queryUserList() {
+        return null;
+    }
+
     /**
      * 根据用户名查询用户对象
      *

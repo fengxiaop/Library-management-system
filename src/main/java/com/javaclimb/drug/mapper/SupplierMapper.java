@@ -5,7 +5,7 @@ import com.javaclimb.drug.entity.Supplier;
 import com.javaclimb.drug.entity.User;
 
 /**
- * 供应商的增删改查Mapper
+ * 出版社的增删改查Mapper
  */
 public interface SupplierMapper extends BaseMapper<Supplier> {
 }

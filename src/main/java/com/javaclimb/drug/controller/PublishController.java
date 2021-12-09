@@ -20,17 +20,17 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * 供应商相关的controller
+ * 出版社相关的controller
  */
 @Controller
 @RequestMapping(value = "/supplier")
-public class SupplierController {
+public class PublishController {
 
     @Autowired
     private ISupplierService supplierService;
 
     /**
-     * 转向供应商页面
+     * 转向出版社页面
      */
     @RequestMapping
     public String supplier(){
@@ -38,7 +38,7 @@ public class SupplierController {
     }
 
     /**
-     * 分页查询供应商列表
+     * 分页查询出版社列表
      */
     @RequestMapping(value = "/supplierQueryPage")
     @ResponseBody
@@ -52,7 +52,7 @@ public class SupplierController {
     }
 
     /**
-     * 转向供应商新增页面
+     * 转向出版社新增页面
      */
     @RequestMapping(value = "/supplierPage")
     public String supplierPage(){
@@ -60,7 +60,7 @@ public class SupplierController {
     }
 
     /**
-     * 添加一个供应商
+     * 添加一个出版社
      */
     @RequestMapping(value = "/supplierAdd")
     @ResponseBody
@@ -75,7 +75,7 @@ public class SupplierController {
     }
 
     /**
-     * 转向供应商编辑页面
+     * 转向出版社编辑页面
      */
     @RequestMapping(value = "/supplierQueryById")
     public String supplierQueryById(@RequestParam(name = "id",required = true)Integer id, Model model){
@@ -85,7 +85,7 @@ public class SupplierController {
     }
 
     /**
-     * 修改一个供应商
+     * 修改一个出版社
      */
     @RequestMapping(value = "/supplierEdit")
     @ResponseBody
@@ -99,7 +99,7 @@ public class SupplierController {
     }
 
     /**
-     * 删除一个供应商
+     * 删除一个出版社
      */
     @RequestMapping(value = "/supplierDelById")
     @ResponseBody
@@ -113,7 +113,7 @@ public class SupplierController {
     }
 
     /**
-     * 获取所有供应商
+     * 获取所有出版社
      */
     @RequestMapping(value = "/supplierList")
     @ResponseBody

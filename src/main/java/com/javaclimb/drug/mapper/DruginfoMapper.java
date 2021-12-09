@@ -5,7 +5,7 @@ import com.javaclimb.drug.entity.Druginfo;
 import com.javaclimb.drug.entity.Supplier;
 
 /**
- * 药品的增删改查Mapper
+ * 图书的增删改查Mapper
  */
 public interface DruginfoMapper extends BaseMapper<Druginfo> {
 }

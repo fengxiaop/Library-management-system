@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="zh_CN" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>读者信息管理</title>
+    <link rel="stylesheet" th:href="@{/static/layui/css/layui.css}" media="all">
+    <link rel="stylesheet" th:href="@{/static/admin/style.css}" media="all">
+    <script type="text/html" id="indexTpl">
+        {{d.LAY_TABLE_INDEX+1}}
+    </script>
+</head>
+<body class="layui-layout-body">
+<div class="layui-fluid">
+    <div class="layui-row layui-col-space15">
+        <div class="layui-col-md12">
+            <div class="layui-card">
+                <div class="layui-card-header">读者信息列表</div>
+                <div class="layui-card-body">
+                    <table class="layui-hide" id="main-table" lay-filter="main-table"></table>
+                    <script type="text/html" id="toolbarDemo">
+                        <span class="layui-inline" lay-event="add"><i class="layui-icon">&#xe654;</i> </span>
+                        <span class="layui-inline" style="width: 240px;">
+                                <input class="layui-input" name="param" id="param" placeholder="读者学号查询" autocomplete="off">
+                            </span>
+                        <span class="layui-btn layui-btn-sm layui-bg-red" lay-event="querySearch">
+                                <i class="layui-icon">&#xe615;</i>查询
+                            </span>
+                    </script>
+                    <script type="text/html" id="barDemo">
+                        <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+                        <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+                    </script>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script th:src="@{/static/layui/layui.js}"></script>
+<script>
+    layui.use(['table','form'],function () {
+        var $ = layui.$;
+        var table = layui.table;
+        table.render({
+            elem: '#main-table',
+            height: 650,
+            url: '/user/userQueryPage',
+            method: 'POST',
+            page: true,
+            id: 'table-load',
+            toolbar: '#toolbarDemo',
+            cols: [
+                [
+                    {title: '序号',templet: '#indexTpl',width: 60,align:'center'},
+                    {field:'username',title:'读者名称',algin:'center',width:350},
+                    {field:'password',title:'读者密码',algin:'center',width:350},
+                    {title:'操作',align:'center',toolbar:'#barDemo',fixed:'right'}
+                ]
+            ]
+        });
+
+        //监听头工具栏事件
+        table.on('toolbar(main-table)',function (obj) {
+            switch (obj.event) {
+                case 'add':
+                    layer.open({
+                        type: 2,
+                        title: '新增读者信息',
+                        content: '/user/userPage',
+                        shade:[0.8,'#393d49'],
+                        area:['600px','400px'],
+                        btn:['确定','取消'],
+                        yes:function (index,layero) {
+                            var iframeWindow = window['layui-layer-iframe'+index];
+                            var submit = layero.find('iframe').contents().find("#LAY-front-submit");
+                            //监听提交
+                            iframeWindow.layui.form.on('submit(LAY-front-submit)',function (data) {
+                                var field = data.field;
+                                $.ajax({
+                                    url: '/user/userAdd',
+                                    data: field,
+                                    async: false,
+                                    cache: false,
+                                    success: function (str) {
+                                        if(str.code === 0){
+                                            table.reload('table-load');
+                                        }
+                                        layer.msg(str.msg,{icon:str.icon,anim:str.anim});
+                                    }
+                                });
+                                layer.close(index);     //关闭弹层
+                            });
+                            submit.trigger('click');
+                        },
+                        success:function (layero,index) {
+
+                        }
+                    });
+                    break;
+                case 'querySearch':
+                    var param = $('#param').val();
+                    table.reload('table-load',{
+                        where: {
+                            param: param
+                        }
+                    });
+                    $('#param').val(param);
+                    break;
+            }
+        });
+
+        //监听编辑、删除
+        table.on('tool(main-table)',function (obj) {
+            var data = obj.data;
+            switch (obj.event) {
+                case 'edit':
+                    layer.open({
+                        type: 2,
+                        title: '编辑读者信息',
+                        content: '/user/userQueryById?id=' +data.id,
+                        shade:[0.8,'#393d49'],
+                        area:['600px','400px'],
+                        btn:['确定','取消'],
+                        yes:function (index,layero) {
+                            var iframeWindow = window['layui-layer-iframe'+index];
+                            var submit = layero.find('iframe').contents().find("#LAY-front-submit");
+                            //监听提交
+                            iframeWindow.layui.form.on('submit(LAY-front-submit)',function (data) {
+                                var field = data.field;
+                                $.ajax({
+                                    url: '/user/userEdit',
+                                    data: field,
+                                    async: false,
+                                    cache: false,
+                                    success: function (str) {
+                                        if(str.code === 0){
+                                            table.reload('table-load');
+                                        }
+                                        layer.msg(str.msg,{icon:str.icon,anim:str.anim});
+                                    }
+                                });
+                                layer.close(index);     //关闭弹层
+                            });
+                            submit.trigger('click');
+                        },
+                        success:function (layero,index) {
+
+                        }
+                    });
+                    break;
+                case 'del':
+                    layer.confirm('确认要删除吗？',function (index) {
+                        $.ajax({
+                            url: '/user/userDelById?id=' +data.id,
+                            data: null,
+                            async: false,
+                            cache: false,
+                            success: function (str) {
+                                table.reload('table-load');
+                                layer.msg(str.msg,{icon:str.icon,anim:str.anim});
+                            }
+                        });
+                    })
+                    break;
+            }
+        });
+    });
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

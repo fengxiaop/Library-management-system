@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import java.util.Date;
 
 /**
- * 药品出入库相关的controller
+ * 图书出入库相关的controller
  */
 @Controller
 @RequestMapping(value = "/owinfo")
@@ -24,7 +24,7 @@ public class OwinfoController {
     private IOwinfoService owinfoService;
 
     /**
-     * 转向药品出入库页面
+     * 转向图书出入库页面
      */
     @RequestMapping
     public String owinfo(){
@@ -46,7 +46,7 @@ public class OwinfoController {
     }
 
     /**
-     * 转向药品出入库新增页面
+     * 转向图书出入库新增页面
      */
     @RequestMapping(value = "/owinfoPage")
     public String owinfoPage(){
@@ -54,7 +54,7 @@ public class OwinfoController {
     }
 
     /**
-     * 添加一个药品出入库
+     * 添加一个图书出入库
      */
     @RequestMapping(value = "/owinfoAdd")
     @ResponseBody
@@ -69,7 +69,7 @@ public class OwinfoController {
     }
 
     /**
-     * 转向药品出入库编辑页面
+     * 转向图书出入库编辑页面
      */
     @RequestMapping(value = "/owinfoQueryById")
     public String owinfoQueryById(@RequestParam(name = "id",required = true)Integer id, Model model){
@@ -79,7 +79,7 @@ public class OwinfoController {
     }
 
     /**
-     * 修改一个药品出入库
+     * 修改一个图书出入库
      */
     @RequestMapping(value = "/owinfoEdit")
     @ResponseBody
@@ -93,7 +93,7 @@ public class OwinfoController {
     }
 
     /**
-     * 删除一个药品出入库
+     * 删除一个图书出入库
      */
     @RequestMapping(value = "/owinfoDelById")
     @ResponseBody

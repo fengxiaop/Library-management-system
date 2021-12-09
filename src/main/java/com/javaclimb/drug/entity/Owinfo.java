@@ -12,7 +12,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 /**
- * 药品出入库
+ * 图书出入库
  */
 @Data
 @TableName(value = "owinfo")
