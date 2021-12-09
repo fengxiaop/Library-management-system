@@ -51,7 +51,7 @@
                 cols: [
                     [
                     {title: '序号',templet: '#indexTpl',width: 60,align:'center'},
-                    {field:'name',title:'供应商名称',algin:'center',width:350},
+                    {field:'name',title:'出版社名称',algin:'center',width:350},
                     {field:'content',title:'描述',algin:'center',width:600},
                     {field:'createtime',title:'创建时间',algin:'center',width:250,
                     templet:"<div>{{layui.util.toDateString(d.createtime,'yyyy-MM-dd HH:mm:ss')}}</div>"},
@@ -66,7 +66,7 @@
                     case 'add':
                         layer.open({
                             type: 2,
-                            title: '新增供应商信息',
+                            title: '新增出版社信息',
                             content: '/supplier/supplierPage',
                             shade:[0.8,'#393d49'],
                             area:['600px','400px'],
@@ -117,7 +117,7 @@
                     case 'edit':
                         layer.open({
                             type: 2,
-                            title: '编辑供应商信息',
+                            title: '编辑出版社信息',
                             content: '/supplier/supplierQueryById?id=' +data.id,
                             shade:[0.8,'#393d49'],
                             area:['600px','400px'],

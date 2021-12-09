@@ -13,15 +13,15 @@
                 <form class="layui-form layui-form-pane" action="">
                     <input name="id" th:value="${obj?.id}" class="layui-input layui-hide"/>
                     <div class="layui-form-item">
-                        <label class="layui-form-label">供应商名称</label>
+                        <label class="layui-form-label">出版社名称</label>
                         <div class="layui-input-block">
-                            <input type="text" name="name" th:value="${obj?.name}" lay-verify="required" placeholder="请输入供应商名称" autocomplete="off" class="layui-input">
+                            <input type="text" name="name" th:value="${obj?.name}" lay-verify="required" placeholder="请输入出版社名称" autocomplete="off" class="layui-input">
                         </div>
                     </div>
                     <div class="layui-form-item">
-                        <label class="layui-form-label">供应商描述</label>
+                        <label class="layui-form-label">出版社描述</label>
                         <div class="layui-input-block">
-                            <textarea name="content" th:text="${obj?.content}" lay-verify="required" placeholder="请输入供应商描述" autocomplete="off" class="layui-textarea"></textarea>
+                            <textarea name="content" th:text="${obj?.content}" lay-verify="required" placeholder="请输入出版社描述" autocomplete="off" class="layui-textarea"></textarea>
                         </div>
                     </div>
                     <div class="layui-form-item layui-hide">
