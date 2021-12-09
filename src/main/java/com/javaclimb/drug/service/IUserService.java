@@ -2,7 +2,6 @@ package com.javaclimb.drug.service;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.javaclimb.drug.entity.Supplier;
 import com.javaclimb.drug.entity.User;
 
 import java.util.List;

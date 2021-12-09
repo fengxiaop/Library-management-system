@@ -4,8 +4,6 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.javaclimb.drug.entity.Owinfo;
 
-import java.util.List;
-
 /**
  * 药品出入库的service接口
  */
