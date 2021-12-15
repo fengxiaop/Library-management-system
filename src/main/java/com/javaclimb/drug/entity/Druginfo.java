@@ -22,29 +22,21 @@ public class Druginfo implements Serializable {
     @TableId(value = "id",type = IdType.AUTO)
     private Integer id;
 
-    /*药品名称*/
     private String name;
 
-    /*药品名称*/
     private String supplier;
 
-    /*生产时间*/
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date producttime;
 
-    /*保质期（月）*/
     private String warrenty;
 
-    /*药品编码*/
     private String number;
 
-    /*价格*/
     private Float price;
 
-    /*库存*/
     private Integer stock;
 
-    /*生产时间转换成年月日*/
     public String getProducttimeStr(){
         return DateUtil.dateConvert(producttime);
     }

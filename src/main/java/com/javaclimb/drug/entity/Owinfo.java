@@ -20,18 +20,13 @@ public class Owinfo implements Serializable {
     @TableId(value = "id",type = IdType.AUTO)
     private Integer id;
 
-    /*药品名称*/
     private String dname;
 
-    /*出库/入库*/
     private String type;
 
-    /*数量*/
     private Integer count;
 
-    /*操作人*/
     private String operator;
 
-    /*操作时间*/
     private Date createtime;
 }

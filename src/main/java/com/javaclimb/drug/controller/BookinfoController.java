@@ -24,104 +24,94 @@ public class BookinfoController {
      * 转向图书页面
      */
     @RequestMapping
-    public String druginfo(){
+    public String druginfo() {
         return "/druginfo";
     }
 
     /**
-     * 分页查询药品列表
+     * 分页查询图书列表
      */
     @RequestMapping(value = "/druginfoQueryPage")
     @ResponseBody
-    public Object druginfoQueryPage(String param, @RequestParam(defaultValue = "1")int pageNum,@RequestParam(defaultValue = "10")int pageSize){
-        try{
-            IPage<Druginfo> iPage = druginfoService.selectDruginfoPage(pageNum,pageSize,param);
+    public Object druginfoQueryPage(String param, @RequestParam(defaultValue = "1") int pageNum, @RequestParam(defaultValue = "10") int pageSize) {
+        try {
+            IPage<Druginfo> iPage = druginfoService.selectDruginfoPage(pageNum, pageSize, param);
             return ResultMapUtil.getHashMapMysqlPage(iPage);
-        } catch (Exception e){
+        } catch (Exception e) {
             return ResultMapUtil.getHashMapException(e);
         }
     }
 
     /**
-     * 转向药品新增页面
+     * 转向图书新增页面
      */
     @RequestMapping(value = "/druginfoPage")
-    public String druginfoPage(){
+    public String druginfoPage() {
         return "/druginfoPage";
     }
 
     /**
-     * 添加一个药品
+     * 添加一个图书
      */
     @RequestMapping(value = "/druginfoAdd")
     @ResponseBody
-    public Object druginfoAdd(Druginfo druginfo){
-        try{
+    public Object druginfoAdd(Druginfo druginfo) {
+        try {
             int i = druginfoService.addDruginfo(druginfo);
             return ResultMapUtil.getHashMapSave(i);
-        } catch (Exception e){
+        } catch (Exception e) {
             return ResultMapUtil.getHashMapException(e);
         }
     }
 
     /**
-     * 转向药品编辑页面
+     * 转向图书编辑页面
      */
     @RequestMapping(value = "/druginfoQueryById")
-    public String druginfoQueryById(@RequestParam(name = "id",required = true)Integer id, Model model){
+    public String druginfoQueryById(@RequestParam(name = "id", required = true) Integer id, Model model) {
         Druginfo druginfo = druginfoService.queryDruginfoById(id);
-        model.addAttribute("obj",druginfo);
+        model.addAttribute("obj", druginfo);
         return "/druginfoPage";
     }
 
     /**
-     * 修改一个药品
+     * 修改一个图书
      */
     @RequestMapping(value = "/druginfoEdit")
     @ResponseBody
-    public Object druginfoEdit(Druginfo druginfo){
-        try{
+    public Object druginfoEdit(Druginfo druginfo) {
+        try {
             int i = druginfoService.editDruginfo(druginfo);
             return ResultMapUtil.getHashMapSave(i);
-        } catch (Exception e){
+        } catch (Exception e) {
             return ResultMapUtil.getHashMapException(e);
         }
     }
 
     /**
-     * 删除一个药品
+     * 删除一个图书
      */
     @RequestMapping(value = "/druginfoDelById")
     @ResponseBody
-    public Object druginfoDelById(Integer id){
-        try{
+    public Object druginfoDelById(Integer id) {
+        try {
             int i = druginfoService.delDruginfoById(id);
             return ResultMapUtil.getHashMapDel(i);
-        } catch (Exception e){
+        } catch (Exception e) {
             return ResultMapUtil.getHashMapException(e);
         }
     }
 
     /**
-     * 获取所有药品
+     * 获取所有图书
      */
     @RequestMapping(value = "/druginfoList")
     @ResponseBody
-    public Object druginfoList(){
+    public Object druginfoList() {
         List<Druginfo> druginfoList = druginfoService.queryDruginfoList();
         return ResultMapUtil.getHashMapList(druginfoList);
     }
-
-    /**
-     * 转向药品保质期检查页面
-     */
-    @RequestMapping(value = "/warranty")
-    public String warranty(){
-        return "/warranty";
-    }
 }
-
-
 
 
 
