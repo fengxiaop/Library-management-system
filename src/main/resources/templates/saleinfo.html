@@ -2,7 +2,7 @@
 <html lang="zh_CN" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>销售记录管理</title>
+    <title>图书明细管理</title>
     <link rel="stylesheet" th:href="@{/static/layui/css/layui.css}" media="all">
     <link rel="stylesheet" th:href="@{/static/admin/style.css}" media="all">
     <script type="text/html" id="indexTpl">
@@ -14,7 +14,7 @@
         <div class="layui-row layui-col-space15">
             <div class="layui-col-md12">
                 <div class="layui-card">
-                    <div class="layui-card-header">销售记录列表</div>
+                    <div class="layui-card-header">推荐记录列表</div>
                     <div class="layui-card-body">
                         <table class="layui-hide" id="main-table" lay-filter="main-table"></table>
                         <script type="text/html" id="toolbarDemo">
@@ -69,7 +69,7 @@
                     case 'add':
                         layer.open({
                             type: 2,
-                            title: '新增销售记录',
+                            title: '新增推荐记录',
                             content: '/saleinfo/saleinfoPage',
                             shade:[0.8,'#393d49'],
                             area:['600px','530px'],
@@ -120,7 +120,7 @@
                     case 'edit':
                         layer.open({
                             type: 2,
-                            title: '编辑销售记录',
+                            title: '编辑推荐记录',
                             content: '/saleinfo/saleinfoQueryById?id=' +data.id,
                             shade:[0.8,'#393d49'],
                             area:['600px','500px'],
