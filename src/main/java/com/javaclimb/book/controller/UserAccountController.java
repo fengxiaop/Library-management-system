@@ -28,9 +28,9 @@ public class UserAccountController {
     }
     @RequestMapping(value = "/userQueryPage")
     @ResponseBody
-    public Object supplierQueryPage(String param, @RequestParam(defaultValue = "1")int page,@RequestParam(defaultValue = "10")int limit){
+    public Object supplierQueryPage(String param, @RequestParam(defaultValue = "1")int pageNum,@RequestParam(defaultValue = "10")int pageSize){
         try{
-            IPage<User> iPage = iUserService.selectUserPage(page, limit, param);
+            IPage<User> iPage = iUserService.selectUserPage(pageNum,pageSize,param);
             return ResultMapUtil.getHashMapMysqlPage(iPage);
         } catch (Exception e){
             return ResultMapUtil.getHashMapException(e);

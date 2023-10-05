@@ -37,9 +37,9 @@ public class PublishController {
      */
     @RequestMapping(value = "/supplierQueryPage")
     @ResponseBody
-    public Object supplierQueryPage(String param, @RequestParam(defaultValue = "1")int page,@RequestParam(defaultValue = "10")int limit){
+    public Object supplierQueryPage(String param, @RequestParam(defaultValue = "1")int pageNum,@RequestParam(defaultValue = "10")int pageSize){
         try{
-            IPage<Supplier> iPage = supplierService.selectSupplierPage(page,limit,param);
+            IPage<Supplier> iPage = supplierService.selectSupplierPage(pageNum,pageSize,param);
             return ResultMapUtil.getHashMapMysqlPage(iPage);
         } catch (Exception e){
             return ResultMapUtil.getHashMapException(e);
