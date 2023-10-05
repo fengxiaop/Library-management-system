@@ -34,9 +34,9 @@ public class OwinfoController {
      */
     @PostMapping(value = "/owinfoQueryPage")
     @ResponseBody
-    public Object owinfoQueryPage(String param, @RequestParam(defaultValue = "1")int page,@RequestParam(defaultValue = "10")int limit){
+    public Object owinfoQueryPage(String param, @RequestParam(defaultValue = "1")int pageNum,@RequestParam(defaultValue = "10")int pageSize){
         try{
-            IPage<Owinfo> iPage = owinfoService.selectOwinfoPage(page,limit,param);
+            IPage<Owinfo> iPage = owinfoService.selectOwinfoPage(pageNum,pageSize,param);
             return ResultMapUtil.getHashMapMysqlPage(iPage);
         } catch (Exception e){
             return ResultMapUtil.getHashMapException(e);
