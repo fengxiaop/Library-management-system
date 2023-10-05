@@ -1,12 +1,12 @@
 server:
-  port: 8887
+  port: 8080
 
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://127.0.0.1/book?useUnicode=true&characterEncoding=utf8&useSSL=true&serverTimezone=UTC
     username: root
-    password: Pj20020318@@
+    password: pj20020318
     type: com.alibaba.druid.pool.DruidDataSource
   mvc:
     static-path-pattern: /static/**
