@@ -30,3 +30,9 @@ http://localhost:8080/ 或 http://localhost:8080/login 即可跳转到登录页�
 
 项目手把手跑起来视频: https://www.bilibili.com/video/BV1SF411q7Qu/?spm_id_from=333.999.0.0 </br>
 演示视频: https://www.bilibili.com/video/BV1AL4y1p7Mr/?spm_id_from=333.999.0.0
+
+或许你不想亲自搭建 可以联系作者email：1493020035@qq.com 有偿搭建 
+
+有什么问题或者bug可以在b站或者github上提 其他问题知识、修改简历、模拟面试均可联系上面的邮箱
+
+价格好商量
