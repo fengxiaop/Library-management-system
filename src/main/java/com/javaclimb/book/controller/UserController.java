@@ -38,7 +38,7 @@ public class UserController {
 
     @RequestMapping(value = "/")
     public String dashmain(){
-        return "/login";
+        return "redirect:/login";
     }
 
     /**
