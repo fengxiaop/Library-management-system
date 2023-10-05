@@ -25,7 +25,7 @@ public class OwinfoController {
      * 转向图书出入库页面
      */
     @RequestMapping
-    public String owinfo(){
+    public String owinfo() {
         return "/owinfo";
     }
 
@@ -34,11 +34,12 @@ public class OwinfoController {
      */
     @PostMapping(value = "/owinfoQueryPage")
     @ResponseBody
-    public Object owinfoQueryPage(String param, @RequestParam(defaultValue = "1")int pageNum,@RequestParam(defaultValue = "10")int pageSize){
-        try{
-            IPage<Owinfo> iPage = owinfoService.selectOwinfoPage(pageNum,pageSize,param);
+    public Object owinfoQueryPage(String param, @RequestParam(defaultValue = "1") int pageNum,
+        @RequestParam(defaultValue = "10") int pageSize) {
+        try {
+            IPage<Owinfo> iPage = owinfoService.selectOwinfoPage(pageNum, pageSize, param);
             return ResultMapUtil.getHashMapMysqlPage(iPage);
-        } catch (Exception e){
+        } catch (Exception e) {
             return ResultMapUtil.getHashMapException(e);
         }
     }
@@ -47,7 +48,7 @@ public class OwinfoController {
      * 转向图书出入库新增页面
      */
     @RequestMapping(value = "/owinfoPage")
-    public String owinfoPage(){
+    public String owinfoPage() {
         return "/owinfoPage";
     }
 
@@ -56,12 +57,12 @@ public class OwinfoController {
      */
     @RequestMapping(value = "/owinfoAdd")
     @ResponseBody
-    public Object owinfoAdd(Owinfo owinfo){
-        try{
+    public Object owinfoAdd(Owinfo owinfo) {
+        try {
             owinfo.setCreatetime(new Date());
             int i = owinfoService.addOwinfo(owinfo);
             return ResultMapUtil.getHashMapSave(i);
-        } catch (Exception e){
+        } catch (Exception e) {
             return ResultMapUtil.getHashMapException(e);
         }
     }
@@ -70,9 +71,9 @@ public class OwinfoController {
      * 转向图书出入库编辑页面
      */
     @RequestMapping(value = "/owinfoQueryById")
-    public String owinfoQueryById(@RequestParam(name = "id",required = true)Integer id, Model model){
+    public String owinfoQueryById(@RequestParam(name = "id", required = true) Integer id, Model model) {
         Owinfo owinfo = owinfoService.queryOwinfoById(id);
-        model.addAttribute("obj",owinfo);
+        model.addAttribute("obj", owinfo);
         return "/owinfoPage";
     }
 
@@ -81,11 +82,11 @@ public class OwinfoController {
      */
     @RequestMapping(value = "/owinfoEdit")
     @ResponseBody
-    public Object owinfoEdit(Owinfo owinfo){
-        try{
+    public Object owinfoEdit(Owinfo owinfo) {
+        try {
             int i = owinfoService.editOwinfo(owinfo);
             return ResultMapUtil.getHashMapSave(i);
-        } catch (Exception e){
+        } catch (Exception e) {
             return ResultMapUtil.getHashMapException(e);
         }
     }
@@ -95,35 +96,14 @@ public class OwinfoController {
      */
     @GetMapping(value = "/owinfoDelById")
     @ResponseBody
-    public Object owinfoDelById(@RequestParam Integer id){
+    public Object owinfoDelById(@RequestParam Integer id) {
 
-        try{
+        try {
             int i = owinfoService.delOwinfoById(id);
             return ResultMapUtil.getHashMapDel(i);
-        } catch (Exception e){
+        } catch (Exception e) {
             return ResultMapUtil.getHashMapException(e);
         }
     }
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

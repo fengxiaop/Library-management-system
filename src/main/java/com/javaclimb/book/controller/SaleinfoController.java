@@ -25,7 +25,7 @@ public class SaleinfoController {
      * 转向销售记录页面
      */
     @RequestMapping
-    public String saleinfo(){
+    public String saleinfo() {
         return "/saleinfo";
     }
 
@@ -34,11 +34,12 @@ public class SaleinfoController {
      */
     @RequestMapping(value = "/saleinfoQueryPage")
     @ResponseBody
-    public Object saleinfoQueryPage(String param, @RequestParam(defaultValue = "1")int page,@RequestParam(defaultValue = "10")int limit){
-        try{
+    public Object saleinfoQueryPage(String param, @RequestParam(defaultValue = "1") int page,
+        @RequestParam(defaultValue = "10") int limit) {
+        try {
             IPage<Saleinfo> iPage = saleinfoService.selectSaleinfoPage(page, limit, param);
             return ResultMapUtil.getHashMapMysqlPage(iPage);
-        } catch (Exception e){
+        } catch (Exception e) {
             return ResultMapUtil.getHashMapException(e);
         }
     }
@@ -47,7 +48,7 @@ public class SaleinfoController {
      * 转向销售记录新增页面
      */
     @RequestMapping(value = "/saleinfoPage")
-    public String saleinfoPage(){
+    public String saleinfoPage() {
         return "/saleinfoPage";
     }
 
@@ -56,11 +57,11 @@ public class SaleinfoController {
      */
     @RequestMapping(value = "/saleinfoAdd")
     @ResponseBody
-    public Object saleinfoAdd(Saleinfo saleinfo){
-        try{
+    public Object saleinfoAdd(Saleinfo saleinfo) {
+        try {
             int i = saleinfoService.addSaleinfo(saleinfo);
             return ResultMapUtil.getHashMapSave(i);
-        } catch (Exception e){
+        } catch (Exception e) {
             return ResultMapUtil.getHashMapException(e);
         }
     }
@@ -69,9 +70,9 @@ public class SaleinfoController {
      * 转向销售记录编辑页面
      */
     @RequestMapping(value = "/saleinfoQueryById")
-    public String saleinfoQueryById(@RequestParam(name = "id",required = true)Integer id, Model model){
+    public String saleinfoQueryById(@RequestParam(name = "id", required = true) Integer id, Model model) {
         Saleinfo saleinfo = saleinfoService.querySaleinfoById(id);
-        model.addAttribute("obj",saleinfo);
+        model.addAttribute("obj", saleinfo);
         return "/saleinfoPage";
     }
 
@@ -80,11 +81,11 @@ public class SaleinfoController {
      */
     @RequestMapping(value = "/saleinfoEdit")
     @ResponseBody
-    public Object saleinfoEdit(Saleinfo saleinfo){
-        try{
+    public Object saleinfoEdit(Saleinfo saleinfo) {
+        try {
             int i = saleinfoService.editSaleinfo(saleinfo);
             return ResultMapUtil.getHashMapSave(i);
-        } catch (Exception e){
+        } catch (Exception e) {
             return ResultMapUtil.getHashMapException(e);
         }
     }
@@ -94,34 +95,13 @@ public class SaleinfoController {
      */
     @RequestMapping(value = "/saleinfoDelById")
     @ResponseBody
-    public Object saleinfoDelById(Integer id){
-        try{
+    public Object saleinfoDelById(Integer id) {
+        try {
             int i = saleinfoService.delSaleinfoById(id);
             return ResultMapUtil.getHashMapDel(i);
-        } catch (Exception e){
+        } catch (Exception e) {
             return ResultMapUtil.getHashMapException(e);
         }
     }
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

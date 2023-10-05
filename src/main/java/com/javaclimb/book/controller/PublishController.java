@@ -28,7 +28,7 @@ public class PublishController {
      * 转向出版社页面
      */
     @RequestMapping
-    public String supplier(){
+    public String supplier() {
         return "/supplier";
     }
 
@@ -37,11 +37,12 @@ public class PublishController {
      */
     @RequestMapping(value = "/supplierQueryPage")
     @ResponseBody
-    public Object supplierQueryPage(String param, @RequestParam(defaultValue = "1")int page,@RequestParam(defaultValue = "10")int limit){
-        try{
-            IPage<Supplier> iPage = supplierService.selectSupplierPage(page,limit,param);
+    public Object supplierQueryPage(String param, @RequestParam(defaultValue = "1") int page,
+        @RequestParam(defaultValue = "10") int limit) {
+        try {
+            IPage<Supplier> iPage = supplierService.selectSupplierPage(page, limit, param);
             return ResultMapUtil.getHashMapMysqlPage(iPage);
-        } catch (Exception e){
+        } catch (Exception e) {
             return ResultMapUtil.getHashMapException(e);
         }
     }
@@ -50,7 +51,7 @@ public class PublishController {
      * 转向出版社新增页面
      */
     @RequestMapping(value = "/supplierPage")
-    public String supplierPage(){
+    public String supplierPage() {
         return "/supplierPage";
     }
 
@@ -59,12 +60,12 @@ public class PublishController {
      */
     @RequestMapping(value = "/supplierAdd")
     @ResponseBody
-    public Object supplierAdd(Supplier supplier){
-        try{
+    public Object supplierAdd(Supplier supplier) {
+        try {
             supplier.setCreatetime(new Date());
             int i = supplierService.addSupplier(supplier);
             return ResultMapUtil.getHashMapSave(i);
-        } catch (Exception e){
+        } catch (Exception e) {
             return ResultMapUtil.getHashMapException(e);
         }
     }
@@ -73,9 +74,9 @@ public class PublishController {
      * 转向出版社编辑页面
      */
     @RequestMapping(value = "/supplierQueryById")
-    public String supplierQueryById(@RequestParam(name = "id",required = true)Integer id, Model model){
+    public String supplierQueryById(@RequestParam(name = "id", required = true) Integer id, Model model) {
         Supplier supplier = supplierService.querySupplierById(id);
-        model.addAttribute("obj",supplier);
+        model.addAttribute("obj", supplier);
         return "/supplierPage";
     }
 
@@ -84,11 +85,11 @@ public class PublishController {
      */
     @RequestMapping(value = "/supplierEdit")
     @ResponseBody
-    public Object supplierEdit(Supplier supplier){
-        try{
+    public Object supplierEdit(Supplier supplier) {
+        try {
             int i = supplierService.editSupplier(supplier);
             return ResultMapUtil.getHashMapSave(i);
-        } catch (Exception e){
+        } catch (Exception e) {
             return ResultMapUtil.getHashMapException(e);
         }
     }
@@ -98,11 +99,11 @@ public class PublishController {
      */
     @RequestMapping(value = "/supplierDelById")
     @ResponseBody
-    public Object supplierDelById(Integer id){
-        try{
+    public Object supplierDelById(Integer id) {
+        try {
             int i = supplierService.delSupplierById(id);
             return ResultMapUtil.getHashMapDel(i);
-        } catch (Exception e){
+        } catch (Exception e) {
             return ResultMapUtil.getHashMapException(e);
         }
     }
@@ -112,30 +113,9 @@ public class PublishController {
      */
     @RequestMapping(value = "/supplierList")
     @ResponseBody
-    public Object supplierList(){
+    public Object supplierList() {
         List<Supplier> supplierList = supplierService.querySupplierList();
         return ResultMapUtil.getHashMapList(supplierList);
     }
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

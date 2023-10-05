@@ -17,7 +17,7 @@ import java.util.Date;
 public class Owinfo implements Serializable {
     /*主键*/
     @TableField(value = "id")
-    @TableId(value = "id",type = IdType.AUTO)
+    @TableId(value = "id", type = IdType.AUTO)
     private Integer id;
 
     private String dname;

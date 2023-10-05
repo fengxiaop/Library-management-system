@@ -6,7 +6,6 @@ import com.javaclimb.book.entity.User;
 
 import java.util.List;
 
-
 public interface IUserService extends IService<User> {
 
     public IPage<User> selectUserPage(int pageNum, int pageSize, String param);

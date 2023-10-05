@@ -25,19 +25,19 @@ public class SupplierServiceImpl extends ServiceImpl<SupplierMapper, Supplier> i
     /**
      * 分页查询供应商数据
      *
-     * @param pageNum  第几页
+     * @param pageNum 第几页
      * @param pageSize 每页多少条数据
-     * @param param    查询参数-供应商名称
+     * @param param 查询参数-供应商名称
      * @return
      */
     @Override
     public IPage<Supplier> selectSupplierPage(int pageNum, int pageSize, String param) {
         QueryWrapper<Supplier> queryWrapper = new QueryWrapper<>();
-        if(StringUtils.isNotEmpty(param)){
-            queryWrapper.like("name",param);
+        if (StringUtils.isNotEmpty(param)) {
+            queryWrapper.like("name", param);
         }
-        Page<Supplier> page = new Page<>(pageNum,pageSize);
-        return supplierMapper.selectPage(page,queryWrapper);
+        Page<Supplier> page = new Page<>(pageNum, pageSize);
+        return supplierMapper.selectPage(page, queryWrapper);
     }
 
     /**

@@ -11,20 +11,20 @@ import com.javaclimb.book.service.IOwinfoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-
 @Service
 public class OwinfoServiceImpl extends ServiceImpl<OwinfoMapper, Owinfo> implements IOwinfoService {
 
     @Autowired
     private OwinfoMapper owinfoMapper;
+
     @Override
     public IPage<Owinfo> selectOwinfoPage(int pageNum, int pageSize, String param) {
         QueryWrapper<Owinfo> queryWrapper = new QueryWrapper<>();
-        if(StringUtils.isNotEmpty(param)){
-            queryWrapper.like("dname",param);
+        if (StringUtils.isNotEmpty(param)) {
+            queryWrapper.like("dname", param);
         }
-        Page<Owinfo> page = new Page<>(pageNum,pageSize);
-        return owinfoMapper.selectPage(page,queryWrapper);
+        Page<Owinfo> page = new Page<>(pageNum, pageSize);
+        return owinfoMapper.selectPage(page, queryWrapper);
     }
 
     @Override

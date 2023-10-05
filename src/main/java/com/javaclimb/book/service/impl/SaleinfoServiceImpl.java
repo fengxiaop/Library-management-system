@@ -16,15 +16,17 @@ public class SaleinfoServiceImpl extends ServiceImpl<SaleinfoMapper, Saleinfo> i
 
     @Autowired
     private SaleinfoMapper saleinfoMapper;
+
     @Override
     public IPage<Saleinfo> selectSaleinfoPage(int pageNum, int pageSize, String param) {
         QueryWrapper<Saleinfo> queryWrapper = new QueryWrapper<>();
-        if(StringUtils.isNotEmpty(param)){
-            queryWrapper.like("dname",param);
+        if (StringUtils.isNotEmpty(param)) {
+            queryWrapper.like("dname", param);
         }
-        Page<Saleinfo> page = new Page<>(pageNum,pageSize);
-        return saleinfoMapper.selectPage(page,queryWrapper);
+        Page<Saleinfo> page = new Page<>(pageNum, pageSize);
+        return saleinfoMapper.selectPage(page, queryWrapper);
     }
+
     @Override
     public int addSaleinfo(Saleinfo saleinfo) {
         return saleinfoMapper.insert(saleinfo);

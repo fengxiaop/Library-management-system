@@ -19,7 +19,7 @@ import java.util.Date;
 public class Bookinfo implements Serializable {
     /*主键*/
     @TableField(value = "id")
-    @TableId(value = "id",type = IdType.AUTO)
+    @TableId(value = "id", type = IdType.AUTO)
     private Integer id;
 
     private String name;
@@ -37,7 +37,7 @@ public class Bookinfo implements Serializable {
 
     private Integer stock;
 
-    public String getProducttimeStr(){
+    public String getProducttimeStr() {
         return DateUtil.dateConvert(producttime);
     }
 }

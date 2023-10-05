@@ -6,14 +6,11 @@ import com.javaclimb.book.entity.Bookinfo;
 
 import java.util.List;
 
-
 public interface IbookinfoService extends IService<Bookinfo> {
 
     public IPage<Bookinfo> selectbookinfoPage(int pageNum, int pageSize, String param);
 
-
     public int addbookinfo(Bookinfo bookinfo);
-
 
     public int editbookinfo(Bookinfo bookinfo);
 

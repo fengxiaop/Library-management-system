@@ -22,17 +22,20 @@ import java.util.List;
 public class UserAccountController {
     @Autowired
     private IUserService iUserService;
+
     @RequestMapping
-    public String user2(){
+    public String user2() {
         return "/user";
     }
+
     @RequestMapping(value = "/userQueryPage")
     @ResponseBody
-    public Object supplierQueryPage(String param, @RequestParam(defaultValue = "1")int page,@RequestParam(defaultValue = "10")int limit){
-        try{
+    public Object supplierQueryPage(String param, @RequestParam(defaultValue = "1") int page,
+        @RequestParam(defaultValue = "10") int limit) {
+        try {
             IPage<User> iPage = iUserService.selectUserPage(page, limit, param);
             return ResultMapUtil.getHashMapMysqlPage(iPage);
-        } catch (Exception e){
+        } catch (Exception e) {
             return ResultMapUtil.getHashMapException(e);
         }
     }
@@ -41,7 +44,7 @@ public class UserAccountController {
      * 转向读者信息新增页面
      */
     @RequestMapping(value = "/userPage")
-    public String userPage(){
+    public String userPage() {
         return "/userPage";
     }
 
@@ -50,11 +53,11 @@ public class UserAccountController {
      */
     @RequestMapping(value = "/userAdd")
     @ResponseBody
-    public Object userAdd(User user){
-        try{
+    public Object userAdd(User user) {
+        try {
             int i = iUserService.addUser(user);
             return ResultMapUtil.getHashMapSave(i);
-        } catch (Exception e){
+        } catch (Exception e) {
             return ResultMapUtil.getHashMapException(e);
         }
     }
@@ -63,9 +66,9 @@ public class UserAccountController {
      * 转向读者页面编辑页面
      */
     @RequestMapping(value = "/userQueryById")
-    public String userQueryById(@RequestParam(name = "id",required = true)Integer id, Model model){
+    public String userQueryById(@RequestParam(name = "id", required = true) Integer id, Model model) {
         User user = iUserService.queryUserById(id);
-        model.addAttribute("obj",user);
+        model.addAttribute("obj", user);
         return "/userPage";
     }
 
@@ -74,11 +77,11 @@ public class UserAccountController {
      */
     @RequestMapping(value = "/userEdit")
     @ResponseBody
-    public Object userEdit(User user){
-        try{
+    public Object userEdit(User user) {
+        try {
             int i = iUserService.editUser(user);
             return ResultMapUtil.getHashMapSave(i);
-        } catch (Exception e){
+        } catch (Exception e) {
             return ResultMapUtil.getHashMapException(e);
         }
     }
@@ -88,11 +91,11 @@ public class UserAccountController {
      */
     @RequestMapping(value = "/userDelById")
     @ResponseBody
-    public Object userDelById(Integer id){
-        try{
+    public Object userDelById(Integer id) {
+        try {
             int i = iUserService.delUserById(id);
             return ResultMapUtil.getHashMapDel(i);
-        } catch (Exception e){
+        } catch (Exception e) {
             return ResultMapUtil.getHashMapException(e);
         }
     }
@@ -102,7 +105,7 @@ public class UserAccountController {
      */
     @RequestMapping(value = "/userList")
     @ResponseBody
-    public Object userList(){
+    public Object userList() {
         List<User> userList = iUserService.queryUserList();
         return ResultMapUtil.getHashMapList(userList);
     }

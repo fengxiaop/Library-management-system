@@ -22,22 +22,20 @@ public class UserController {
      * 转向登录页面
      */
     @RequestMapping(value = "/login")
-    public String login(){
+    public String login() {
         return "/login";
     }
 
-
     @RequestMapping(value = "/favicon.ico")
     @ResponseBody
-    public HashMap favicon(){
+    public HashMap favicon() {
         HashMap<Object, Object> objectObjectHashMap = new HashMap<>();
-        objectObjectHashMap.put("icon","123");
+        objectObjectHashMap.put("icon", "123");
         return objectObjectHashMap;
     }
 
-
     @RequestMapping(value = "/")
-    public String dashmain(){
+    public String dashmain() {
         return "redirect:/login";
     }
 
@@ -46,27 +44,27 @@ public class UserController {
      */
     @RequestMapping(value = "/toLogin")
     @ResponseBody
-    public Object toLogin(String username,String password){
-        if(username==null||password==null){
-            return ResultMapUtil.getHashMapLogin("用户名密码不能为空","2");
+    public Object toLogin(String username, String password) {
+        if (username == null || password == null) {
+            return ResultMapUtil.getHashMapLogin("用户名密码不能为空", "2");
         }
         Subject subject = SecurityUtils.getSubject();
-        UsernamePasswordToken token = new UsernamePasswordToken(username,password);
-        try{
+        UsernamePasswordToken token = new UsernamePasswordToken(username, password);
+        try {
             subject.login(token);
-        }catch (UnknownAccountException e){
-            return ResultMapUtil.getHashMapLogin("用户名不存在","2");
-        }catch (IncorrectCredentialsException e){
-            return ResultMapUtil.getHashMapLogin("密码错误","2");
+        } catch (UnknownAccountException e) {
+            return ResultMapUtil.getHashMapLogin("用户名不存在", "2");
+        } catch (IncorrectCredentialsException e) {
+            return ResultMapUtil.getHashMapLogin("密码错误", "2");
         }
-        return ResultMapUtil.getHashMapLogin("验证成功","1");
+        return ResultMapUtil.getHashMapLogin("验证成功", "1");
     }
 
     /**
      * 转向后台管理首页
      */
     @RequestMapping(value = "/index")
-    public String index(){
+    public String index() {
         return "/index";
     }
 
@@ -74,7 +72,7 @@ public class UserController {
      * 退出登录
      */
     @RequestMapping(value = "/logout")
-    public String logout(){
+    public String logout() {
         Subject subject = SecurityUtils.getSubject();
         subject.logout();
         return "redirect:/login";

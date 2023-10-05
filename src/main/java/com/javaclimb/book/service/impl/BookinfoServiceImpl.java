@@ -18,14 +18,15 @@ public class BookinfoServiceImpl extends ServiceImpl<BookInfoMapper, Bookinfo> i
 
     @Autowired
     private BookInfoMapper bookinfoMapper;
+
     @Override
     public IPage<Bookinfo> selectbookinfoPage(int pageNum, int pageSize, String param) {
         QueryWrapper<Bookinfo> queryWrapper = new QueryWrapper<>();
-        if(StringUtils.isNotEmpty(param)){
-            queryWrapper.like("name",param);
+        if (StringUtils.isNotEmpty(param)) {
+            queryWrapper.like("name", param);
         }
-        Page<Bookinfo> page = new Page<>(pageNum,pageSize);
-        return bookinfoMapper.selectPage(page,queryWrapper);
+        Page<Bookinfo> page = new Page<>(pageNum, pageSize);
+        return bookinfoMapper.selectPage(page, queryWrapper);
     }
 
     @Override

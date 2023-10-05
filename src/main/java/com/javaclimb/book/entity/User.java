@@ -16,7 +16,7 @@ import java.io.Serializable;
 public class User implements Serializable {
     /*主键*/
     @TableField(value = "id")
-    @TableId(value = "id",type = IdType.AUTO)
+    @TableId(value = "id", type = IdType.AUTO)
     private Integer id;
 
     /*用户名*/

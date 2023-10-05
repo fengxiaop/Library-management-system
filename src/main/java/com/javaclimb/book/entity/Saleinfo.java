@@ -19,7 +19,7 @@ import java.util.Date;
 public class Saleinfo implements Serializable {
     /*主键*/
     @TableField(value = "id")
-    @TableId(value = "id",type = IdType.AUTO)
+    @TableId(value = "id", type = IdType.AUTO)
     private Integer id;
 
     private String dname;
@@ -35,7 +35,7 @@ public class Saleinfo implements Serializable {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date operatetime;
 
-    public String getOperatetimeStr(){
+    public String getOperatetimeStr() {
         return DateUtil.dateConvert(operatetime);
     }
 }

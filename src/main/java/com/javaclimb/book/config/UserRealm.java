@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 public class UserRealm extends AuthorizingRealm {
     @Autowired
     private IUserService userService;
+
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principalCollection) {
         return null;
@@ -21,32 +22,23 @@ public class UserRealm extends AuthorizingRealm {
 
     /**
      * 登录认证
+     * 
      * @param authenticationToken
      * @return
      * @throws AuthenticationException
      */
     @Override
-    protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken authenticationToken) throws AuthenticationException {
-        UsernamePasswordToken token = (UsernamePasswordToken) authenticationToken;
+    protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken authenticationToken)
+        throws AuthenticationException {
+        UsernamePasswordToken token = (UsernamePasswordToken)authenticationToken;
         String username = token.getUsername();
         User queryUser = new User();
         queryUser.setUsername(username);
-        //根据用户名查询用户是否存在
+        // 根据用户名查询用户是否存在
         User user = userService.queryUserByUsername(queryUser);
-        if(user==null){
+        if (user == null) {
             return null;
         }
-        return new SimpleAuthenticationInfo(user,user.getPassword(),getName());
+        return new SimpleAuthenticationInfo(user, user.getPassword(), getName());
     }
 }
-
-
-
-
-
-
-
-
-
-
-

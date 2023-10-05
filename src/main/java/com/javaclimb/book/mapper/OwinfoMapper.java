@@ -6,5 +6,4 @@ import com.javaclimb.book.entity.Owinfo;
 /**
  * 图书儿出入库的增删改查Mapper
  */
-public interface OwinfoMapper extends BaseMapper<Owinfo> {
-}
+public interface OwinfoMapper extends BaseMapper<Owinfo> {}

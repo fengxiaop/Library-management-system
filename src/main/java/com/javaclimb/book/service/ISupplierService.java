@@ -7,7 +7,7 @@ import com.javaclimb.book.entity.Supplier;
 import java.util.List;
 
 public interface ISupplierService extends IService<Supplier> {
-    public IPage<Supplier> selectSupplierPage(int pageNum,int pageSize,String param);
+    public IPage<Supplier> selectSupplierPage(int pageNum, int pageSize, String param);
 
     public int addSupplier(Supplier supplier);
 

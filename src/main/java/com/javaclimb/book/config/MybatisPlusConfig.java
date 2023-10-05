@@ -12,7 +12,7 @@ import org.springframework.context.annotation.Configuration;
 @MapperScan(value = "com.javaclimb.book.mapper")
 public class MybatisPlusConfig {
     @Bean
-    public PaginationInterceptor paginationInterceptor(){
+    public PaginationInterceptor paginationInterceptor() {
         PaginationInterceptor page = new PaginationInterceptor();
         page.setDialectType("mysql");
         return page;

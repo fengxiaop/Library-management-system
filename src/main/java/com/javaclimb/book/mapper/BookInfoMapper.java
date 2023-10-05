@@ -7,5 +7,4 @@ import com.javaclimb.book.entity.Bookinfo;
 /**
  * 图书的增删改查Mapper
  */
-public interface BookInfoMapper extends BaseMapper<Bookinfo> {
-}
+public interface BookInfoMapper extends BaseMapper<Bookinfo> {}

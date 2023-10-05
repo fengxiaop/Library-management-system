@@ -6,5 +6,4 @@ import com.javaclimb.book.entity.User;
 /**
  * 用户表的增删改查Mapper
  */
-public interface UserMapper extends BaseMapper<User> {
-}
+public interface UserMapper extends BaseMapper<User> {}

@@ -19,23 +19,21 @@ public class ShiroFilterConfiguration {
      * 创建过滤工厂Bean
      */
     @Bean
-    public ShiroFilterFactoryBean shiroFilterFactoryBean(){
+    public ShiroFilterFactoryBean shiroFilterFactoryBean() {
         ShiroFilterFactoryBean shiroFilterFactoryBean = new ShiroFilterFactoryBean();
         shiroFilterFactoryBean.setSecurityManager(securityManager());
         /**
-         * Shiro内置过滤器，实现权限相关的拦截器
-         * anon:无需登录，可以访问
-         * authc:必须登录才可以访问
+         * Shiro内置过滤器，实现权限相关的拦截器 anon:无需登录，可以访问 authc:必须登录才可以访问
          */
-        Map<String,String> filterMap = new LinkedHashMap<>();
-        filterMap.put("/static/**","anon");
-        filterMap.put("/login","anon");
-        filterMap.put("/toLogin","anon");
-        filterMap.put("/**","authc");
+        Map<String, String> filterMap = new LinkedHashMap<>();
+        filterMap.put("/static/**", "anon");
+        filterMap.put("/login", "anon");
+        filterMap.put("/toLogin", "anon");
+        filterMap.put("/**", "authc");
         shiroFilterFactoryBean.setFilterChainDefinitionMap(filterMap);
-        //不登录自动转向的页面
+        // 不登录自动转向的页面
         shiroFilterFactoryBean.setLoginUrl("/login");
-        //登录后自动转向的页面
+        // 登录后自动转向的页面
         shiroFilterFactoryBean.setSuccessUrl("/index");
         return shiroFilterFactoryBean;
     }
@@ -44,7 +42,7 @@ public class ShiroFilterConfiguration {
      * 权限管理
      */
     @Bean
-    public DefaultWebSecurityManager securityManager(){
+    public DefaultWebSecurityManager securityManager() {
         DefaultWebSecurityManager securityManager = new DefaultWebSecurityManager();
         securityManager.setRealm(userRealm());
         return securityManager;
@@ -52,10 +50,11 @@ public class ShiroFilterConfiguration {
 
     /**
      * 创建Realm ，认证用
+     * 
      * @return
      */
     @Bean
-    public UserRealm userRealm(){
+    public UserRealm userRealm() {
         UserRealm userRealm = new UserRealm();
         return userRealm;
     }
@@ -64,21 +63,7 @@ public class ShiroFilterConfiguration {
      * thymeleaf整合Shiro
      */
     @Bean
-    public ShiroDialect shiroDialect(){
+    public ShiroDialect shiroDialect() {
         return new ShiroDialect();
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-

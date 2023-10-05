@@ -6,5 +6,4 @@ import com.javaclimb.book.entity.Saleinfo;
 /**
  * 新书到达记录的增删改查Mapper
  */
-public interface SaleinfoMapper extends BaseMapper<Saleinfo> {
-}
+public interface SaleinfoMapper extends BaseMapper<Saleinfo> {}

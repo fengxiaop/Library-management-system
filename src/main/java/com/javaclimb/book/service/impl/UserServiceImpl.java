@@ -25,11 +25,11 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
     @Override
     public IPage<User> selectUserPage(int pageNum, int pageSize, String param) {
         QueryWrapper<User> queryWrapper = new QueryWrapper<>();
-        if(StringUtils.isNotEmpty(param)){
-            queryWrapper.like("username",param);
+        if (StringUtils.isNotEmpty(param)) {
+            queryWrapper.like("username", param);
         }
-        Page<User> page = new Page<>(pageNum,pageSize);
-        return userMapper.selectPage(page,queryWrapper);
+        Page<User> page = new Page<>(pageNum, pageSize);
+        return userMapper.selectPage(page, queryWrapper);
     }
 
     @Override
@@ -65,7 +65,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
     @Override
     public User queryUserByUsername(User user) {
         QueryWrapper<User> wrapper = new QueryWrapper<>();
-        wrapper.eq("username",user.getUsername());
+        wrapper.eq("username", user.getUsername());
         return userMapper.selectOne(wrapper);
     }
 }

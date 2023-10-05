@@ -13,7 +13,7 @@ import java.util.Date;
 @TableName(value = "supplier")
 public class Supplier implements Serializable {
     @TableField(value = "id")
-    @TableId(value = "id",type = IdType.AUTO)
+    @TableId(value = "id", type = IdType.AUTO)
     private Integer id;
 
     private String name;
