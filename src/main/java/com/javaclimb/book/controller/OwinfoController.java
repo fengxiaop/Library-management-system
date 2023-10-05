@@ -7,9 +7,7 @@ import com.javaclimb.book.service.IOwinfoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
 
@@ -32,9 +30,9 @@ public class OwinfoController {
     }
 
     /**
-     * 分页查询药品出入库列表
+     * 分页查询图书出入库列表
      */
-    @RequestMapping(value = "/owinfoQueryPage")
+    @PostMapping(value = "/owinfoQueryPage")
     @ResponseBody
     public Object owinfoQueryPage(String param, @RequestParam(defaultValue = "1")int pageNum,@RequestParam(defaultValue = "10")int pageSize){
         try{
@@ -95,9 +93,10 @@ public class OwinfoController {
     /**
      * 删除一个图书出入库
      */
-    @RequestMapping(value = "/owinfoDelById")
+    @GetMapping(value = "/owinfoDelById")
     @ResponseBody
-    public Object owinfoDelById(Integer id){
+    public Object owinfoDelById(@RequestParam Integer id){
+
         try{
             int i = owinfoService.delOwinfoById(id);
             return ResultMapUtil.getHashMapDel(i);
