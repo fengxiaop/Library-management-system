@@ -8,11 +8,13 @@ Springboot+mybatisPlus的学习+Layui+mysql制作的图书管理系统
 
 使用navicat新建链接后使用复制book.sql中的内容 全选后选择执行
 
-![image.png](https://s2.loli.net/2023/10/05/lxKy7INJr9o5EOv.png)
+![image.png](https://s2.loli.net/2023/10/05/TMVueSQ5b1Yk6OB.png)
 
 刷新一下之后能看到book的库和其中的表则表示已经导入完成
 
-![image.png](https://s2.loli.net/2023/10/05/TMVueSQ5b1Yk6OB.png)
+
+
+![image.png](https://s2.loli.net/2023/10/05/lxKy7INJr9o5EOv.png)
 
 启动起来之后输入 默认账号admin 密码 admin
 
