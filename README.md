@@ -2,8 +2,24 @@
 适合于:课程设计 简易学习Springboot+mybatisPlus的学习<br
 JDK版本:11 <br>
 需要的插件: lombok<br>
-mysql:8.0 <br>
 Springboot+mybatisPlus的学习+Layui+mysql制作的图书管理系统
+
+# 可视化的mysql工具：推荐navicat
+
+使用navicat新建链接后使用复制book.sql中的内容 全选后选择执行
+
+![image-20231005140702873](https://windxiao-1307340949.cos.ap-guangzhou.myqcloud.com/image-20231005140702873.png)
+
+刷新一下之后能看到book的库和其中的表则表示已经导入完成
+
+![image-20231005140834210](https://windxiao-1307340949.cos.ap-guangzhou.myqcloud.com/image-20231005140834210.png)
+
+启动起来之后输入 默认账号admin 密码 admin
+
+http://localhost:8080/ 或 http://localhost:8080/login 即可跳转到登录页面
+
+
+
 ![](https://s2.loli.net/2021/12/08/1SL5ATUJ7RNP6pO.png)
 ![](https://s2.loli.net/2021/12/08/14ucXJk89FLS7rf.png)
 ![](https://s2.loli.net/2021/12/08/nNYM5BpJXKvTERW.png)
