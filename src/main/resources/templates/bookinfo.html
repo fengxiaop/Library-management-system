@@ -43,7 +43,7 @@
             table.render({
                 elem: '#main-table',
                 height: 650,
-                url: '/druginfo/druginfoQueryPage',
+                url: '/bookinfo/bookinfoQueryPage',
                 method: 'POST',
                 page: true,
                 id: 'table-load',
@@ -71,7 +71,7 @@
                         layer.open({
                             type: 2,
                             title: '新增图书信息',
-                            content: '/druginfo/druginfoPage',
+                            content: '/bookinfo/bookinfoPage',
                             shade:[0.8,'#393d49'],
                             area:['600px','530px'],
                             btn:['确定','取消'],
@@ -82,7 +82,7 @@
                                 iframeWindow.layui.form.on('submit(LAY-front-submit)',function (data) {
                                     var field = data.field;
                                     $.ajax({
-                                        url: '/druginfo/druginfoAdd',
+                                        url: '/bookinfo/bookinfoAdd',
                                         data: field,
                                         async: false,
                                         cache: false,
@@ -122,7 +122,7 @@
                         layer.open({
                             type: 2,
                             title: '编辑图书信息',
-                            content: '/druginfo/druginfoQueryById?id=' +data.id,
+                            content: '/bookinfo/bookinfoQueryById?id=' +data.id,
                             shade:[0.8,'#393d49'],
                             area:['600px','500px'],
                             btn:['确定','取消'],
@@ -133,7 +133,7 @@
                                 iframeWindow.layui.form.on('submit(LAY-front-submit)',function (data) {
                                     var field = data.field;
                                     $.ajax({
-                                        url: '/druginfo/druginfoEdit',
+                                        url: '/bookinfo/bookinfoEdit',
                                         data: field,
                                         async: false,
                                         cache: false,
@@ -156,7 +156,7 @@
                     case 'del':
                         layer.confirm('确认要删除吗？',function (index) {
                             $.ajax({
-                                url: '/druginfo/druginfoDelById?id=' +data.id,
+                                url: '/bookinfo/bookinfoDelById?id=' +data.id,
                                 data: null,
                                 async: false,
                                 cache: false,

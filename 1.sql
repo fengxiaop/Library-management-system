@@ -17,27 +17,24 @@ CREATE DATABASE /*!32312 IF NOT EXISTS*/`book` /*!40100 DEFAULT CHARACTER SET la
 
 USE `book`;
 
-/*Table structure for table `druginfo` */
 
-DROP TABLE IF EXISTS `druginfo`;
+DROP TABLE IF EXISTS `bookinfo`;
 
-CREATE TABLE `druginfo` (
+CREATE TABLE `bookinfo` (
   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '主键',
-  `name` varchar(255) DEFAULT NULL COMMENT '名称',
-  `supplier` varchar(255) DEFAULT NULL COMMENT '供应商',
-  `producttime` datetime DEFAULT NULL COMMENT '生产日期',
-  `warrenty` varchar(255) DEFAULT NULL COMMENT '保质期(月)',
-  `number` varchar(255) DEFAULT NULL COMMENT '药品编码',
-  `price` float(20,2) DEFAULT NULL COMMENT '价格',
+  `name` varchar(255) DEFAULT NULL COMMENT '图书名称',
+  `supplier` varchar(255) DEFAULT NULL COMMENT '出版社',
+  `producttime` datetime DEFAULT NULL COMMENT '出版日期',
+  `warrenty` varchar(255) DEFAULT NULL COMMENT '作者',
+  `number` varchar(255) DEFAULT NULL COMMENT '图书编码',
+  `price` float(20,2) DEFAULT NULL COMMENT '图书价格',
   `stock` int(11) DEFAULT NULL COMMENT '库存',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT COMMENT='药品信息';
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT COMMENT='图书信息';
 
-/*Data for the table `druginfo` */
 
-insert  into `druginfo`(`id`,`name`,`supplier`,`producttime`,`warrenty`,`number`,`price`,`stock`) values (6,'数据库','机械出版社','2021-10-04 16:00:00','24','1003',11.50,100),(7,'c++','清华大学出版社','2021-10-04 16:00:00','24','1004',13.00,100),(8,'计算机网络','清华大学出版社','2021-10-04 16:00:00','24','1005',15.00,100),(9,'计算机组成原理','清华大学出版社','2021-10-04 16:00:00','24','1006',16.00,100),(10,'python程序设计','清华大学出版社','2021-10-04 16:00:00','24','1007',17.00,100),(11,'Oracle','清华大学出版社','2021-10-04 16:00:00','24','1008',19.00,100),(12,'redis','清华大学出版社','2021-10-04 16:00:00','24','1009',22.00,200),(13,'springboot','清华大学出版社','2021-10-04 16:00:00','24','1010',100.00,100);
+insert  into `bookinfo`(`id`,`name`,`supplier`,`producttime`,`warrenty`,`number`,`price`,`stock`) values (6,'数据库','机械出版社','2021-10-04 16:00:00','24','1003',11.50,100),(7,'c++','清华大学出版社','2021-10-04 16:00:00','24','1004',13.00,100),(8,'计算机网络','清华大学出版社','2021-10-04 16:00:00','24','1005',15.00,100),(9,'计算机组成原理','清华大学出版社','2021-10-04 16:00:00','24','1006',16.00,100),(10,'python程序设计','清华大学出版社','2021-10-04 16:00:00','24','1007',17.00,100),(11,'Oracle','清华大学出版社','2021-10-04 16:00:00','24','1008',19.00,100),(12,'redis','清华大学出版社','2021-10-04 16:00:00','24','1009',22.00,200),(13,'springboot','清华大学出版社','2021-10-04 16:00:00','24','1010',100.00,100);
 
-/*Table structure for table `owinfo` */
 
 DROP TABLE IF EXISTS `owinfo`;
 
