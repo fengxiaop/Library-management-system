@@ -50,9 +50,9 @@
             toolbar: '#toolbarDemo',
             cols: [
                 [
-                    {title: '序号',templet: '#indexTpl',width: 60,align:'center'},
-                    {field:'username',title:'读者账号',algin:'center',width:350},
-                    {field:'password',title:'读者密码',algin:'center',width:350},
+                    {title: '序号',templet: '#indexTpl',width: 200,align:'center'},
+                    {field:'username',title:'读者账号',algin:'center',width:300},
+                    {field:'password',title:'读者密码',algin:'center',width:300},
                     {title:'操作',align:'center',toolbar:'#barDemo',fixed:'right'}
                 ]
             ]
@@ -117,8 +117,9 @@
                         type: 2,
                         title: '编辑读者信息',
                         content: '/user/userQueryById?id=' +data.id,
-                        shade:[0.8,'#393d49'],
-                        area:['600px','400px'],
+                        shade:[0.3,'#393d49'],
+                        area:['600px','360px'],
+                        // area: [auto,auto],
                         btn:['确定','取消'],
                         yes:function (index,layero) {
                             var iframeWindow = window['layui-layer-iframe'+index];
