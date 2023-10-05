@@ -68,26 +68,26 @@
                 trigger: 'click'
             });
 
-            //当前药品的值
-            var currentDname = '[[${obj?.dname}]]';
-            //获取供应商列表
-            $.ajax({
-                url: '/druginfo/druginfoList',
-                dataType:'json',
-                type:'post',
-                cache:false,
-                success:function (data) {
-                    $('#dname').prepend("<option value=''>请选择</option>");
-                    for(var i=0;i<data.data.length;i++){
-                        if(data.data[i].name==currentDname){
-                            $('#dname').append("<option selected value='"+data.data[i].name+"'>"+data.data[i].name+"</option>");
-                        }else{
-                            $('#dname').append("<option value='"+data.data[i].name+"'>"+data.data[i].name+"</option>");
-                        }
-                    }
-                    form.render();          //下拉列表渲染，把内容加载进去
-                }
-            });
+            // //当前药品的值
+            // var currentDname = '[[${obj?.dname}]]';
+            // //获取供应商列表
+            // $.ajax({
+            //     url: '/druginfo/druginfoList',
+            //     dataType:'json',
+            //     type:'post',
+            //     cache:false,
+            //     success:function (data) {
+            //         $('#dname').prepend("<option value=''>请选择</option>");
+            //         for(var i=0;i<data.data.length;i++){
+            //             if(data.data[i].name==currentDname){
+            //                 $('#dname').append("<option selected value='"+data.data[i].name+"'>"+data.data[i].name+"</option>");
+            //             }else{
+            //                 $('#dname').append("<option value='"+data.data[i].name+"'>"+data.data[i].name+"</option>");
+            //             }
+            //         }
+            //         form.render();          //下拉列表渲染，把内容加载进去
+            //     }
+            // });
         });
     </script>
 </body>

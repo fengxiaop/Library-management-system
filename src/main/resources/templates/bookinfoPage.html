@@ -27,7 +27,8 @@
                     <div class="layui-form-item">
                         <label class="layui-form-label">出版社</label>
                         <div class="layui-input-block">
-                            <select name="supplier" id="supplier"></select>
+                            <input type="text" name="number" th:value="${obj?.supplier}" lay-verify="required" placeholder="请输入图书编码" autocomplete="off" class="layui-input">
+<!--                            <select name="supplier" id="supplier"></select>-->
                         </div>
                     </div>
                     <div class="layui-form-item">
@@ -74,26 +75,26 @@
                 trigger: 'click'
             });
 
-            //当前供应商的值
-            var currentSupplier = '[[${obj?.supplier}]]';
-            //获取供应商列表
-            $.ajax({
-                url: '/supplier/supplierList',
-                dataType:'json',
-                type:'post',
-                cache:false,
-                success:function (data) {
-                    $('#supplier').prepend("<option value=''>请选择</option>");
-                    for(var i=0;i<data.data.length;i++){
-                        if(data.data[i].name==currentSupplier){
-                            $('#supplier').append("<option selected value='"+data.data[i].name+"'>"+data.data[i].name+"</option>");
-                        }else{
-                            $('#supplier').append("<option value='"+data.data[i].name+"'>"+data.data[i].name+"</option>");
-                        }
-                    }
-                    form.render();          //下拉列表渲染，把内容加载进去
-                }
-            });
+            // //当前供应商的值
+            // var currentSupplier = '[[${obj?.supplier}]]';
+            // //获取供应商列表
+            // $.ajax({
+            //     url: '/supplier/supplierList',
+            //     dataType:'json',
+            //     type:'post',
+            //     cache:false,
+            //     success:function (data) {
+            //         $('#supplier').prepend("<option value=''>请选择</option>");
+            //         for(var i=0;i<data.data.length;i++){
+            //             if(data.data[i].name==currentSupplier){
+            //                 $('#supplier').append("<option selected value='"+data.data[i].name+"'>"+data.data[i].name+"</option>");
+            //             }else{
+            //                 $('#supplier').append("<option value='"+data.data[i].name+"'>"+data.data[i].name+"</option>");
+            //             }
+            //         }
+            //         form.render();          //下拉列表渲染，把内容加载进去
+            //     }
+            // });
         });
     </script>
 </body>

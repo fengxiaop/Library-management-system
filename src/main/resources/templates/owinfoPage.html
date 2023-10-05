@@ -15,7 +15,7 @@
                     <div class="layui-form-item">
                         <label class="layui-form-label">图书名称</label>
                         <div class="layui-input-block">
-                            <select name="dname" id="dname"></select>
+                            <input type="text" name="dname" th:value="${obj?.dname}" lay-verify="required" placeholder="请输入图书名称" autocomplete="off" class="layui-input">
                         </div>
                     </div>
                     <div class="layui-form-item">
@@ -54,26 +54,26 @@
             var $ = layui.$;
             var form = layui.form;
 
-            //当前图书的值
-            var currentDname = '[[${obj?.dname}]]';
-            //获取出版社列表
-            $.ajax({
-                url: '/druginfo/druginfoList',
-                dataType:'json',
-                type:'post',
-                cache:false,
-                success:function (data) {
-                    $('#dname').prepend("<option value=''>请选择</option>");
-                    for(var i=0;i<data.data.length;i++){
-                        if(data.data[i].name==currentDname){
-                            $('#dname').append("<option selected value='"+data.data[i].name+"'>"+data.data[i].name+"</option>");
-                        }else{
-                            $('#dname').append("<option value='"+data.data[i].name+"'>"+data.data[i].name+"</option>");
-                        }
-                    }
-                    form.render();          //下拉列表渲染，把内容加载进去
-                }
-            });
+            // //当前图书的值
+            // var currentDname = '[[${obj?.dname}]]';
+            // //获取出版社列表
+            // $.ajax({
+            //     url: '/druginfo/druginfoList',
+            //     dataType:'json',
+            //     type:'post',
+            //     cache:false,
+            //     success:function (data) {
+            //         $('#dname').prepend("<option value=''>请选择</option>");
+            //         for(var i=0;i<data.data.length;i++){
+            //             if(data.data[i].name==currentDname){
+            //                 $('#dname').append("<option selected value='"+data.data[i].name+"'>"+data.data[i].name+"</option>");
+            //             }else{
+            //                 $('#dname').append("<option value='"+data.data[i].name+"'>"+data.data[i].name+"</option>");
+            //             }
+            //         }
+            //         form.render();          //下拉列表渲染，把内容加载进去
+            //     }
+            // });
         });
     </script>
 </body>

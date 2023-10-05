@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.javaclimb.book.common.ResultMapUtil;
 import com.javaclimb.book.entity.Bookinfo;
 import com.javaclimb.book.service.IbookinfoService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,6 +18,7 @@ import java.util.List;
  * 图书管理页面
  */
 @Controller
+@Slf4j
 @RequestMapping(value = "/bookinfo")
 public class BookinfoController {
 
@@ -68,11 +70,13 @@ public class BookinfoController {
     }
 
     /**
+     * 通过id查询图书相关信息
      * 转向图书编辑页面
      */
     @RequestMapping(value = "/bookinfoQueryById")
     public String bookinfoQueryById(@RequestParam(name = "id", required = true) Integer id, Model model) {
         Bookinfo bookinfo = bookinfoService.querybookinfoById(id);
+        log.debug("bookinfo:"+bookinfo.toString());
         model.addAttribute("obj", bookinfo);
         return "/bookinfoPage";
     }
