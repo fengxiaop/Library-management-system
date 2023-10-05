@@ -10,6 +10,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.HashMap;
+
 /**
  * 用户相关的controller
  */
@@ -21,6 +23,21 @@ public class UserController {
      */
     @RequestMapping(value = "/login")
     public String login(){
+        return "/login";
+    }
+
+
+    @RequestMapping(value = "/favicon.ico")
+    @ResponseBody
+    public HashMap favicon(){
+        HashMap<Object, Object> objectObjectHashMap = new HashMap<>();
+        objectObjectHashMap.put("icon","123");
+        return objectObjectHashMap;
+    }
+
+
+    @RequestMapping(value = "/")
+    public String dashmain(){
         return "/login";
     }
 
