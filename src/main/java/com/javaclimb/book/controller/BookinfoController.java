@@ -38,9 +38,9 @@ public class BookinfoController {
      */
     @RequestMapping(value = "/bookinfoQueryPage")
     @ResponseBody
-    public Object bookinfoQueryPage(String param, @RequestParam(defaultValue = "1") int pageNum, @RequestParam(defaultValue = "10") int pageSize) {
+    public Object bookinfoQueryPage(String param, @RequestParam(defaultValue = "1") int page, @RequestParam(defaultValue = "10") int limit) {
         try {
-            IPage<Bookinfo> iPage = bookinfoService.selectbookinfoPage(pageNum, pageSize, param);
+            IPage<Bookinfo> iPage = bookinfoService.selectbookinfoPage(page, limit, param);
             return ResultMapUtil.getHashMapMysqlPage(iPage);
         } catch (Exception e) {
             return ResultMapUtil.getHashMapException(e);

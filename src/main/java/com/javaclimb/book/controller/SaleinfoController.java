@@ -34,9 +34,9 @@ public class SaleinfoController {
      */
     @RequestMapping(value = "/saleinfoQueryPage")
     @ResponseBody
-    public Object saleinfoQueryPage(String param, @RequestParam(defaultValue = "1")int pageNum,@RequestParam(defaultValue = "10")int pageSize){
+    public Object saleinfoQueryPage(String param, @RequestParam(defaultValue = "1")int page,@RequestParam(defaultValue = "10")int limit){
         try{
-            IPage<Saleinfo> iPage = saleinfoService.selectSaleinfoPage(pageNum,pageSize,param);
+            IPage<Saleinfo> iPage = saleinfoService.selectSaleinfoPage(page, limit, param);
             return ResultMapUtil.getHashMapMysqlPage(iPage);
         } catch (Exception e){
             return ResultMapUtil.getHashMapException(e);
