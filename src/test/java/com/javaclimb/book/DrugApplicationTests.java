@@ -21,4 +21,14 @@ class DrugApplicationTests {
         }
     }
 
+    @Test
+    void insertUserList() {
+        for (int i = 0; i < 1000; i++) {
+            User user = new User();
+            user.setUsername("admin"+i);
+            user.setPassword("adminidx"+i);
+            userService.addUser(user);
+        }
+    }
+
 }
