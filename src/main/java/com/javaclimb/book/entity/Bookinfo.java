@@ -15,8 +15,8 @@ import java.util.Date;
  * 药品
  */
 @Data
-@TableName(value = "druginfo")
-public class Druginfo implements Serializable {
+@TableName(value = "bookinfo")
+public class Bookinfo implements Serializable {
     /*主键*/
     @TableField(value = "id")
     @TableId(value = "id",type = IdType.AUTO)

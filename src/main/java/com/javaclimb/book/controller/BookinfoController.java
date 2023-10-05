@@ -2,8 +2,8 @@ package com.javaclimb.book.controller;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.javaclimb.book.common.ResultMapUtil;
-import com.javaclimb.book.entity.Druginfo;
-import com.javaclimb.book.service.IDruginfoService;
+import com.javaclimb.book.entity.Bookinfo;
+import com.javaclimb.book.service.IbookinfoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,29 +13,32 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
 
+/**
+ * 图书管理页面
+ */
 @Controller
-@RequestMapping(value = "/druginfo")
+@RequestMapping(value = "/bookinfo")
 public class BookinfoController {
 
     @Autowired
-    private IDruginfoService druginfoService;
+    private IbookinfoService bookinfoService;
 
     /**
      * 转向图书页面
      */
     @RequestMapping
-    public String druginfo() {
-        return "/druginfo";
+    public String bookInfo() {
+        return "/bookinfo";
     }
 
     /**
      * 分页查询图书列表
      */
-    @RequestMapping(value = "/druginfoQueryPage")
+    @RequestMapping(value = "/bookinfoQueryPage")
     @ResponseBody
-    public Object druginfoQueryPage(String param, @RequestParam(defaultValue = "1") int pageNum, @RequestParam(defaultValue = "10") int pageSize) {
+    public Object bookinfoQueryPage(String param, @RequestParam(defaultValue = "1") int pageNum, @RequestParam(defaultValue = "10") int pageSize) {
         try {
-            IPage<Druginfo> iPage = druginfoService.selectDruginfoPage(pageNum, pageSize, param);
+            IPage<Bookinfo> iPage = bookinfoService.selectbookinfoPage(pageNum, pageSize, param);
             return ResultMapUtil.getHashMapMysqlPage(iPage);
         } catch (Exception e) {
             return ResultMapUtil.getHashMapException(e);
@@ -45,19 +48,19 @@ public class BookinfoController {
     /**
      * 转向图书新增页面
      */
-    @RequestMapping(value = "/druginfoPage")
-    public String druginfoPage() {
-        return "/druginfoPage";
+    @RequestMapping(value = "/bookinfoPage")
+    public String bookinfoPage() {
+        return "/bookinfoPage";
     }
 
     /**
      * 添加一个图书
      */
-    @RequestMapping(value = "/druginfoAdd")
+    @RequestMapping(value = "/bookinfoAdd")
     @ResponseBody
-    public Object druginfoAdd(Druginfo druginfo) {
+    public Object bookinfoAdd(Bookinfo bookinfo) {
         try {
-            int i = druginfoService.addDruginfo(druginfo);
+            int i = bookinfoService.addbookinfo(bookinfo);
             return ResultMapUtil.getHashMapSave(i);
         } catch (Exception e) {
             return ResultMapUtil.getHashMapException(e);
@@ -67,21 +70,21 @@ public class BookinfoController {
     /**
      * 转向图书编辑页面
      */
-    @RequestMapping(value = "/druginfoQueryById")
-    public String druginfoQueryById(@RequestParam(name = "id", required = true) Integer id, Model model) {
-        Druginfo druginfo = druginfoService.queryDruginfoById(id);
-        model.addAttribute("obj", druginfo);
-        return "/druginfoPage";
+    @RequestMapping(value = "/bookinfoQueryById")
+    public String bookinfoQueryById(@RequestParam(name = "id", required = true) Integer id, Model model) {
+        Bookinfo bookinfo = bookinfoService.querybookinfoById(id);
+        model.addAttribute("obj", bookinfo);
+        return "/bookinfoPage";
     }
 
     /**
      * 修改一个图书
      */
-    @RequestMapping(value = "/druginfoEdit")
+    @RequestMapping(value = "/bookinfoEdit")
     @ResponseBody
-    public Object druginfoEdit(Druginfo druginfo) {
+    public Object bookinfoEdit(Bookinfo bookinfo) {
         try {
-            int i = druginfoService.editDruginfo(druginfo);
+            int i = bookinfoService.editbookinfo(bookinfo);
             return ResultMapUtil.getHashMapSave(i);
         } catch (Exception e) {
             return ResultMapUtil.getHashMapException(e);
@@ -91,11 +94,11 @@ public class BookinfoController {
     /**
      * 删除一个图书
      */
-    @RequestMapping(value = "/druginfoDelById")
+    @RequestMapping(value = "/bookinfoDelById")
     @ResponseBody
-    public Object druginfoDelById(Integer id) {
+    public Object bookinfoDelById(Integer id) {
         try {
-            int i = druginfoService.delDruginfoById(id);
+            int i = bookinfoService.delbookinfoById(id);
             return ResultMapUtil.getHashMapDel(i);
         } catch (Exception e) {
             return ResultMapUtil.getHashMapException(e);
@@ -105,11 +108,11 @@ public class BookinfoController {
     /**
      * 获取所有图书
      */
-    @RequestMapping(value = "/druginfoList")
+    @RequestMapping(value = "/bookinfoList")
     @ResponseBody
-    public Object druginfoList() {
-        List<Druginfo> druginfoList = druginfoService.queryDruginfoList();
-        return ResultMapUtil.getHashMapList(druginfoList);
+    public Object bookinfoList() {
+        List<Bookinfo> bookinfoList = bookinfoService.querybookinfoList();
+        return ResultMapUtil.getHashMapList(bookinfoList);
     }
 }
 
