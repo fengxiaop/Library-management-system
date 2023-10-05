@@ -20,9 +20,8 @@ import java.util.List;
 @Controller
 @RequestMapping(value = "/user")
 public class UserAccountController {
-@Autowired
+    @Autowired
     private IUserService iUserService;
-    private ISupplierService supplierService;
     @RequestMapping
     public String user2(){
         return "/user";
