@@ -14,9 +14,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
 
+/**
+ * 读者用户管理Controller
+ */
 @Controller
 @RequestMapping(value = "/user")
-public class User2Controller {
+public class UserAccountController {
 @Autowired
     private IUserService iUserService;
     private ISupplierService supplierService;
@@ -36,7 +39,7 @@ public class User2Controller {
     }
 
     /**
-     * 转向出版社新增页面
+     * 转向读者信息新增页面
      */
     @RequestMapping(value = "/userPage")
     public String userPage(){
@@ -44,7 +47,7 @@ public class User2Controller {
     }
 
     /**
-     * 添加一个出版社
+     * 添加一个读者用户信息
      */
     @RequestMapping(value = "/userAdd")
     @ResponseBody
@@ -58,7 +61,7 @@ public class User2Controller {
     }
 
     /**
-     * 转向出版社编辑页面
+     * 转向读者页面编辑页面
      */
     @RequestMapping(value = "/userQueryById")
     public String userQueryById(@RequestParam(name = "id",required = true)Integer id, Model model){
@@ -68,7 +71,7 @@ public class User2Controller {
     }
 
     /**
-     * 修改一个出版社
+     * 修改读者信息
      */
     @RequestMapping(value = "/userEdit")
     @ResponseBody
@@ -82,7 +85,7 @@ public class User2Controller {
     }
 
     /**
-     * 删除一个出版社
+     * 删除读者信息
      */
     @RequestMapping(value = "/userDelById")
     @ResponseBody
@@ -96,7 +99,7 @@ public class User2Controller {
     }
 
     /**
-     * 获取所有出版社
+     * 获取所有读者信息
      */
     @RequestMapping(value = "/userList")
     @ResponseBody
