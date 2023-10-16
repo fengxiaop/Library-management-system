@@ -1,4 +1,7 @@
 # 简单图书管理系统
+
+项目手把手跑起来视频: https://www.bilibili.com/video/BV1SF411q7Qu/?spm_id_from=333.999.0.0 </br>
+演示视频: https://www.bilibili.com/video/BV1AL4y1p7Mr/?spm_id_from=333.999.0.0
 适合于:课程设计 简易学习Springboot+mybatisPlus的学习<br
 JDK版本:11 <br>
 需要的插件: lombok<br>
@@ -27,9 +30,6 @@ http://localhost:8080/ 或 http://localhost:8080/login 即可跳转到登录页�
 ![](https://s2.loli.net/2021/12/08/nNYM5BpJXKvTERW.png)
 
 如果对你的学习有帮助  请你动动你的小手点点star。
-
-项目手把手跑起来视频: https://www.bilibili.com/video/BV1SF411q7Qu/?spm_id_from=333.999.0.0 </br>
-演示视频: https://www.bilibili.com/video/BV1AL4y1p7Mr/?spm_id_from=333.999.0.0
 
 或许你不想亲自搭建 可以联系作者email：1493020035@qq.com 有偿搭建 
 
